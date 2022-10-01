@@ -1,25 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import { HashRouter, Route, Routes } from "react-router-dom";
+import styled from "styled-components";
+import { router } from "./router";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppBox className="appBox">
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossOrigin="true"
+      />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+        rel="stylesheet"
+      />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Red+Hat+Mono:wght@500&display=swap"
+        rel="stylesheet"
+      />
+      <HashRouter>
+        <Routes>
+          {router.map((el, i) => (
+            <Route key={i} path={el.path} element={el.element} />
+          ))}
+        </Routes>
+      </HashRouter>
+    </AppBox>
   );
 }
 
-export default App;
+const AppBox = styled.div`
+  display: flex;
+`;
