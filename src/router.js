@@ -1,5 +1,6 @@
 import Algorigthms from "./components/Algorithms";
 import LikeButton from "./components/LikeButton";
+import OddNum from "./components/OddNum";
 import SwappingArray from "./components/SwappingArray";
 
 export const router = [
@@ -17,5 +18,10 @@ export const router = [
     route: "test3",
     path: "/test3",
     element: <SwappingArray />,
+  },
+  {
+    route: "test4",
+    path: "/test4",
+    element: <OddNum />,
   },
 ];
