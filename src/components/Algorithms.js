@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function Algorigthms() {
+export default function Algorithms() {
   const [likes, setLikes] = useState(100);
 
   const solution = (N) => {

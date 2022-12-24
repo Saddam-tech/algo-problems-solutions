@@ -1,16 +1,15 @@
 import React, { useState } from "react";
 
 export default function OddNum() {
-  const [likes, setLikes] = useState(100);
-
   function solution(A) {
     let result = 0;
 
     for (let element of A) {
       // Apply Bitwise XOR to the current and next element
       result ^= element;
+      console.log(result);
     }
-    console.log(result);
+    // console.log(result);
     return result;
   }
 
@@ -18,10 +17,10 @@ export default function OddNum() {
     <>
       <div>
         <button
-          className={`like-button ${likes > 100 ? "liked" : ""}`}
-          onClick={() => solution([9, 3, 9, 2, 9, 3, 9])}
+          className="like-button"
+          onClick={() => solution([9, 3, 9, 3, 9, 6, 9])}
         >
-          Like | <span className="likes-counter">{likes}</span>
+          {"TEST".toUpperCase()}
         </button>
       </div>
       <style>{`

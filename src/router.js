@@ -1,5 +1,11 @@
+import CodingTest from "./components/2MEU_CODING_TEST";
 import Algorigthms from "./components/Algorithms";
+import BinarySearch from "./components/BinarySearch";
+import CalcMissing from "./components/CalcMissing";
+import CalcSteps from "./components/CalcSteps";
 import LikeButton from "./components/LikeButton";
+import LinearSearch from "./components/LinearSearch";
+import NamedOne from "./components/NamedOne";
 import OddNum from "./components/OddNum";
 import SwappingArray from "./components/SwappingArray";
 
@@ -23,5 +29,35 @@ export const router = [
     route: "test4",
     path: "/test4",
     element: <OddNum />,
+  },
+  {
+    route: "test5",
+    path: "/test5",
+    element: <CalcSteps />,
+  },
+  {
+    route: "test6",
+    path: "/test6",
+    element: <CalcMissing />,
+  },
+  {
+    route: "test7",
+    path: "/test7",
+    element: <NamedOne />,
+  },
+  {
+    route: "test8",
+    path: "/test8",
+    element: <BinarySearch />,
+  },
+  {
+    route: "test9",
+    path: "/test9",
+    element: <LinearSearch />,
+  },
+  {
+    route: "test10",
+    path: "/test10",
+    element: <CodingTest />,
   },
 ];
