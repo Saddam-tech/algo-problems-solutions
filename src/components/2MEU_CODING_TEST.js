@@ -60,6 +60,7 @@ export default function CodingTest() {
     for (let j = 0; j <= arr.length - 1; j++) {
       console.log({ leftArr });
       console.log({ modifyArr });
+      console.log({ nicknames });
       if (
         leftArr.includes(arr[j].split(" ")[1]) &&
         arr[j].split(" ")[0] !== "Leave"
@@ -75,7 +76,7 @@ export default function CodingTest() {
         } 님이 방명록에 새글을 남겼습니다.`;
       }
       if (arr[j].split(" ")[0] === "Leave") {
-        arr.splice(j, 1);
+        arr[j] = "";
       }
     }
     return arr.join(" ");
