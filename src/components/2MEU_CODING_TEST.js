@@ -24,7 +24,6 @@ export default function CodingTest() {
     let leftArr = [];
     let modifyArr = [];
     let nicknames = [];
-    let resultArr = [];
     for (let i = 0; i <= arr.length - 1; i++) {
       let item = arr[i].split(" ");
       let action = item[0];
@@ -58,9 +57,6 @@ export default function CodingTest() {
       }
     }
     for (let j = 0; j <= arr.length - 1; j++) {
-      console.log({ leftArr });
-      console.log({ modifyArr });
-      console.log({ nicknames });
       if (
         leftArr.includes(arr[j].split(" ")[1]) &&
         arr[j].split(" ")[0] !== "Leave"
@@ -89,23 +85,12 @@ export default function CodingTest() {
           className="like-button"
           onClick={() => {
             console.log(
-              //   solution2([
-              //     "Write uid1234 Black",
-              //     "Write uid4567 Josh",
-              //     "Write uid1234 White",
-              //     "Write uid4567 White",
-              //     "Leave uid1234",
-              //   ])
               solution2([
                 "Write uid1234 Black",
                 "Write uid4567 Josh",
                 "Write uid1234 White",
                 "Write uid4567 White",
-                "Write uid8901 Tom",
-                "Write uid1234 Blue",
                 "Leave uid1234",
-                "Write uid4567 Josh",
-                "Leave uid8901",
               ])
             );
           }}
