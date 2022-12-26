@@ -27,9 +27,8 @@ console.log(problem1([6, 6, 6, 0, 0, 11, 11], ["green", "red", "violet"]));
 // 문제 #2
 
 function problem2(arr) {
-  let leftArr = [];
-  let modifyArr = [];
-  let nicknames = [];
+  let left = {};
+  let write = {};
   for (let i = 0; i <= arr.length - 1; i++) {
     let item = arr[i].split(" ");
     let action = item[0];
@@ -38,46 +37,27 @@ function problem2(arr) {
 
     switch (action) {
       case "Leave":
-        leftArr.push(uid);
+        left[uid] = { action, uid, nickname };
         break;
       case "Write":
-        for (let l = 0; l <= arr.length - 1; l++) {
-          if (arr[l].split(" ")[0] === "Leave") {
-            continue;
-          } else {
-            if (arr[l].split(" ")[1] === uid) {
-              if (modifyArr.includes(uid)) {
-                for (let k of nicknames) {
-                  k.nickname = nickname;
-                }
-              } else {
-                modifyArr.push(uid);
-                nicknames.push({ uid, nickname });
-              }
-            }
-          }
-        }
+        write[uid] = { action, uid, nickname };
         break;
       default:
         return "";
     }
   }
   for (let j = 0; j <= arr.length - 1; j++) {
-    if (
-      leftArr.includes(arr[j].split(" ")[1]) &&
-      arr[j].split(" ")[0] !== "Leave"
-    ) {
-      arr[j] = "떠난 더비님이 방명록에 새글을 남겼습니다.";
-    }
-    if (
-      modifyArr.includes(arr[j].split(" ")[1]) &&
-      arr[j].split(" ")[0] !== "Leave"
-    ) {
-      arr[j] = `${
-        nicknames.find((el) => el.uid === arr[j].split(" ")[1]).nickname
-      } 님이 방명록에 새글을 남겼습니다.`;
-    }
-    if (arr[j].split(" ")[0] === "Leave") {
+    if (arr[j].split(" ")[0] !== "Leave") {
+      if (left[arr[j].split(" ")[1]]) {
+        arr[j] = `떠난 더비님이 방명록에 새글을 남겼습니다.`;
+        continue;
+      }
+      if (write[arr[j].split(" ")[1]]) {
+        arr[j] = `${
+          write[arr[j].split(" ")[1]].nickname
+        } 님이 방명록에 새글을 남겼습니다.`;
+      }
+    } else {
       arr[j] = "";
     }
   }

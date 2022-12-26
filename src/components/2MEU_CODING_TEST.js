@@ -41,13 +41,18 @@ export default function CodingTest() {
       }
     }
     for (let j = 0; j <= arr.length - 1; j++) {
-      if (write[arr[j].split(" ")[1]]) {
-        arr[j] = `${
-          write[arr[j].split(" ")[1]].nickname
-        } 님이 방명록에 새글을 남겼습니다.`;
-      }
-      if (left[arr[j].split(" ")[1]]) {
-        arr[j] = `떠난 더비님이 방명록에 새글을 남겼습니다.`;
+      if (arr[j].split(" ")[0] !== "Leave") {
+        if (left[arr[j].split(" ")[1]]) {
+          arr[j] = `떠난 더비님이 방명록에 새글을 남겼습니다.`;
+          continue;
+        }
+        if (write[arr[j].split(" ")[1]]) {
+          arr[j] = `${
+            write[arr[j].split(" ")[1]].nickname
+          } 님이 방명록에 새글을 남겼습니다.`;
+        }
+      } else {
+        arr[j] = "";
       }
     }
     return arr.join(" ");
@@ -61,17 +66,11 @@ export default function CodingTest() {
           onClick={() => {
             console.log(
               solution2([
-                "Write uid8901 Kendal_Jenner",
-                "Write uid3456 Chris",
                 "Write uid1234 Black",
                 "Write uid4567 Josh",
                 "Write uid1234 White",
                 "Write uid4567 White",
-                "Write uid8901 Brown",
-                "Write uid1234 Blue",
-                "Write uid4567 Josh",
-                "Write uid8901 Tom",
-                "Write uid3456 Jerry",
+                "Leave uid1234",
               ])
             );
             // console.log(
