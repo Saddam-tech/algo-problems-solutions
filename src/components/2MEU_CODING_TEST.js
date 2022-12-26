@@ -21,9 +21,8 @@ export default function CodingTest() {
   }
 
   function solution2(arr) {
-    let leftArr = [];
-    let modifyArr = [];
-    let nicknames = [];
+    let left = {};
+    let write = {};
     for (let i = 0; i <= arr.length - 1; i++) {
       let item = arr[i].split(" ");
       let action = item[0];
@@ -32,47 +31,23 @@ export default function CodingTest() {
 
       switch (action) {
         case "Leave":
-          leftArr.push(uid);
+          left[uid] = { action, uid, nickname };
           break;
         case "Write":
-          for (let l = 0; l <= arr.length - 1; l++) {
-            if (arr[l].split(" ")[0] === "Leave") {
-              continue;
-            } else {
-              if (arr[l].split(" ")[1] === uid) {
-                if (modifyArr.includes(uid)) {
-                  for (let k of nicknames) {
-                    k.nickname = nickname;
-                  }
-                } else {
-                  modifyArr.push(uid);
-                  nicknames.push({ uid, nickname });
-                }
-              }
-            }
-          }
+          write[uid] = { action, uid, nickname };
           break;
         default:
           return "";
       }
     }
     for (let j = 0; j <= arr.length - 1; j++) {
-      if (
-        leftArr.includes(arr[j].split(" ")[1]) &&
-        arr[j].split(" ")[0] !== "Leave"
-      ) {
-        arr[j] = "떠난 더비님이 방명록에 새글을 남겼습니다.";
-      }
-      if (
-        modifyArr.includes(arr[j].split(" ")[1]) &&
-        arr[j].split(" ")[0] !== "Leave"
-      ) {
+      if (write[arr[j].split(" ")[1]]) {
         arr[j] = `${
-          nicknames.find((el) => el.uid === arr[j].split(" ")[1]).nickname
+          write[arr[j].split(" ")[1]].nickname
         } 님이 방명록에 새글을 남겼습니다.`;
       }
-      if (arr[j].split(" ")[0] === "Leave") {
-        arr[j] = "";
+      if (left[arr[j].split(" ")[1]]) {
+        arr[j] = `떠난 더비님이 방명록에 새글을 남겼습니다.`;
       }
     }
     return arr.join(" ");
@@ -86,13 +61,28 @@ export default function CodingTest() {
           onClick={() => {
             console.log(
               solution2([
+                "Write uid8901 Kendal_Jenner",
+                "Write uid3456 Chris",
                 "Write uid1234 Black",
                 "Write uid4567 Josh",
                 "Write uid1234 White",
                 "Write uid4567 White",
-                "Leave uid1234",
+                "Write uid8901 Brown",
+                "Write uid1234 Blue",
+                "Write uid4567 Josh",
+                "Write uid8901 Tom",
+                "Write uid3456 Jerry",
               ])
             );
+            // console.log(
+            //   solution2([
+            //     "Write uid1234 Black",
+            //     "Write uid4567 Josh",
+            //     "Write uid1234 White",
+            //     "Write uid4567 White",
+            //     "Leave uid1234",
+            //   ])
+            // );
           }}
         >
           Test
