@@ -30,7 +30,6 @@ function problem2(arr) {
   let leftArr = [];
   let modifyArr = [];
   let nicknames = [];
-  let resultArr = [];
   for (let i = 0; i <= arr.length - 1; i++) {
     let item = arr[i].split(" ");
     let action = item[0];
@@ -64,9 +63,6 @@ function problem2(arr) {
     }
   }
   for (let j = 0; j <= arr.length - 1; j++) {
-    console.log({ leftArr });
-    console.log({ modifyArr });
-    console.log({ nicknames });
     if (
       leftArr.includes(arr[j].split(" ")[1]) &&
       arr[j].split(" ")[0] !== "Leave"
