@@ -7,7 +7,9 @@ import LikeButton from "./components/LikeButton";
 import LinearSearch from "./components/LinearSearch";
 import NamedOne from "./components/NamedOne";
 import OddNum from "./components/OddNum";
+import SearchEngine from "./components/SearchEngine";
 import SwappingArray from "./components/SwappingArray";
+import UseCallBack from "./components/UseCallback";
 
 export const router = [
   {
@@ -59,5 +61,15 @@ export const router = [
     route: "test10",
     path: "/test10",
     element: <CodingTest />,
+  },
+  {
+    route: "test11",
+    path: "/test11",
+    element: <SearchEngine />,
+  },
+  {
+    route: "test12",
+    path: "/test12",
+    element: <UseCallBack />,
   },
 ];
