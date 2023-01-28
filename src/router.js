@@ -10,6 +10,7 @@ import OddNum from "./components/OddNum";
 import SearchEngine from "./components/SearchEngine";
 import SwappingArray from "./components/SwappingArray";
 import UseCallBack from "./components/UseCallback";
+import UseMemo from "./components/UseMemo";
 
 export const router = [
   {
@@ -72,6 +73,21 @@ export const router = [
     path: "/test12",
     element: (
       <UseCallBack
+        names={[
+          "Justin Bieber",
+          "Andrew Tate",
+          "Tristan Tate",
+          "Donald Trump",
+          "Elon Musk",
+        ]}
+      />
+    ),
+  },
+  {
+    route: "test13",
+    path: "/test13",
+    element: (
+      <UseMemo
         names={[
           "Justin Bieber",
           "Andrew Tate",
