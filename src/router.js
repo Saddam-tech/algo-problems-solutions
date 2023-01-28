@@ -70,6 +70,16 @@ export const router = [
   {
     route: "test12",
     path: "/test12",
-    element: <UseCallBack />,
+    element: (
+      <UseCallBack
+        names={[
+          "Justin Bieber",
+          "Andrew Tate",
+          "Tristan Tate",
+          "Donald Trump",
+          "Elon Musk",
+        ]}
+      />
+    ),
   },
 ];

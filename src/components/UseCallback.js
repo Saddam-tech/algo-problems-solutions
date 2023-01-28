@@ -1,30 +1,34 @@
-import { useState, useCallback } from "react";
-import Modal from "./Modal";
+import React, { useState, useCallback } from "react";
+import debounce from "lodash.debounce";
 
-export default function UseCallBack() {
-  const [state, setState] = useState("Hello!!!");
-  const [show, setShow] = useState(false);
+export default function UseCallback({ names }) {
+  const [query, setQuery] = useState("");
 
-  console.log("Hello from Parent of Modal!!!");
+  let filteredNames = names;
 
-  const test1 = useCallback(() => {
-    console.log("test1 => usaCallback()");
-  }, []);
-  const test2 = () => {
-    setState("Escape the Matrix!!!");
+  if (query !== "") {
+    filteredNames = names.filter((name) => {
+      return name.toLowerCase().includes(query.toLowerCase());
+    });
+  }
+
+  const changeHandler = (event) => {
+    setQuery(event.target.value);
   };
-  const test3 = () => {
-    console.log("test3");
-    setShow((prev) => !prev);
-  };
+
+  const debouncedChangeHandler = useCallback(debounce(changeHandler, 300), []);
 
   return (
-    <div className="App">
-      <h1>Hello CodeSandbox</h1>
-      <h2>Start editing to see some magic happen!</h2>
-      <button onClick={test2}>Click Me to re-render Modal!!!</button>
-      <button onClick={test3}>Click me to Re-render Parent Component!!!</button>
-      <Modal modalClick={test1} modalText={state} />
+    <div>
+      <input
+        onChange={debouncedChangeHandler}
+        type="text"
+        placeholder="Type a query..."
+      />
+      {filteredNames.map((name) => (
+        <div key={name}>{name}</div>
+      ))}
+      <div>{filteredNames.length === 0 && query !== "" && "No matches..."}</div>
     </div>
   );
 }
